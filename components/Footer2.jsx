@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useState, useEffect } from "react";
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 const Footer = () => {
   
@@ -48,7 +49,13 @@ const Footer = () => {
         {/* className="hidden md:block container mx-auto px-4" */}
       <div  className={`hidden md:block container mx-auto px-4 max-w-7xl`}>
         <div className='px-0 mb-5'>
-            <img width={150} style={{ marginLeft: '-14px' }} src="/logodark.png" alt="" /> 
+            <Image style={{ marginLeft: '-14px' }} src="/logodark.png" alt="img"   
+              priority={true}
+              quality={100}
+              sizes='100vw'
+              height={150}
+              width={150}
+            /> 
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Keep in Touch */}
@@ -57,16 +64,16 @@ const Footer = () => {
             <h3 className="text-gray-800 font-semibold mb-4">KEEP IN TOUCH</h3>
             <div className="flex gap-4 mb-6">
               <a href="https://www.facebook.com/Homerepairingandservices" target="_blank" rel="noopener noreferrer">
-                <img src="/assets/imgs/fb.png" alt="Facebook" width={28} height={28} />
+                <Image src="/assets/imgs/fb.png" alt="Facebook" width={28} height={28} />
               </a>
               <a href="https://instagram.com/homofixcompany" target="_blank" rel="noopener noreferrer">
-                <img src="/assets/imgs/insta.png" alt="Instagram" width={28} height={28} />
+                <Image src="/assets/imgs/insta.png" alt="Instagram" width={28} height={28} />
               </a>
               <a href="https://www.linkedin.com/company/homofix-in/" target="_blank" rel="noopener noreferrer">
-                <img src="/assets/imgs/linkdin.png" alt="LinkedIn" width={28} height={28} />
+                <Image src="/assets/imgs/linkdin.png" alt="LinkedIn" width={28} height={28} />
               </a>
               {/* <a href="#" target="_blank" rel="noopener noreferrer">
-                <img src="/assets/imgs/youtube.png" alt="YouTube" width={28} height={28} />
+                <Image src="/assets/imgs/youtube.png" alt="YouTube" width={28} height={28} />
               </a> */}
             </div>
             <div className="mb-6">
@@ -74,10 +81,12 @@ const Footer = () => {
               <a href="https://play.google.com/store/apps/details?id=com.homofix.homo_fix" 
                  target="_blank" 
                  rel="noopener noreferrer">
-                <img 
+                <Image 
                   src="/assets/imgs/googlepaystore.webp" 
                   alt="Get it on Google Play" 
                   className="max-w-[140px]"
+                  width={140}
+                  height={140}
                 />
               </a>
             </div>
@@ -130,16 +139,16 @@ const Footer = () => {
               <h3 className="text-gray-800 text-sm font-semibold mb-4">KEEP IN TOUCH</h3>
               <div className="flex gap-4 mb-6">
                 <a href="https://www.facebook.com/Homerepairingandservices" target="_blank" rel="noopener noreferrer">
-                  <img src="/assets/imgs/fb.png" alt="Facebook" width={28} height={28} />
+                  <Image src="/assets/imgs/fb.png" alt="Facebook" width={28} height={28} />
                 </a>
                 <a href="https://instagram.com/homofixcompany" target="_blank" rel="noopener noreferrer">
-                  <img src="/assets/imgs/insta.png" alt="Instagram" width={28} height={28} />
+                  <Image src="/assets/imgs/insta.png" alt="Instagram" width={28} height={28} />
                 </a>
                 <a href="https://www.linkedin.com/company/homofix-in/" target="_blank" rel="noopener noreferrer">
-                  <img src="/assets/imgs/linkdin.png" alt="LinkedIn" width={28} height={28} />
+                  <Image src="/assets/imgs/linkdin.png" alt="LinkedIn" width={28} height={28} />
                 </a>
                 {/* <a href="#" target="_blank" rel="noopener noreferrer">
-                  <img src="/assets/imgs/youtube.png" alt="YouTube" width={28} height={28} />
+                  <Image src="/assets/imgs/youtube.png" alt="YouTube" width={28} height={28} />
                 </a> */}
               </div>
               <div className="mb-6">
@@ -147,16 +156,25 @@ const Footer = () => {
                 <a href="https://play.google.com/store/apps/details?id=com.homofix.homo_fix" 
                   target="_blank" 
                   rel="noopener noreferrer">
-                  <img 
+                  <Image 
                     src="/assets/imgs/googlepaystore.webp" 
                     alt="Get it on Google Play" 
                     className="max-w-[140px]"
+                    width={140}
+                    height={140}
                   />
                 </a>
               </div>
             </div>
             <div className='px-0 mb-5'>
-              <img width={150} style={{ marginLeft: '-14px' }} src="/logodark.png" alt="" /> 
+              <Image 
+               style={{ marginLeft: '-14px' }} src="/logodark.png" alt="logo"  
+              priority={true}
+              quality={100}
+              sizes='100vw'
+              width={150}
+              height={150}
+              /> 
             </div>
 
           </div>
