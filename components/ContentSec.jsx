@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 
 const ContentSec = () => {
         const [pages , setPages] = useState([]);
-        const url = 'https://support.homofixcompany.com/api/Legal-Page-Get/';   
+        const url = `${process.env.NEXT_PUBLIC_API_URL}/Legal-Page-Get/`;   
     useEffect(()=>{
                 const featch = async() =>{
                     const res = await fetch( url,{cache : 'no-store'});
