@@ -379,7 +379,7 @@ const BookingTab = ({bookings , userProfileInfo}) => {
                   </div>
                   
                 </div>
-                <div className='text-center'><span className='text-basecolor text-xs'>For Support Call : <a href="tel:+918800855760">+91-88-00-855-760</a></span></div>
+                <div className='text-center'><span className='text-basecolor text-xs'>For Support Call (between 8am - 8pm) : <br /> <a href="tel:+918800855760">+91-88-00-855-760</a></span></div>
                 <div className="rating text-center py-2">
                     {booking.status == "Completed" && (
                        < Feedback bookingID={booking.id} />

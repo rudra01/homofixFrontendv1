@@ -47,6 +47,9 @@ const Booking = ({ cnames, title , cartItems , customer , couponID , PaymentAmou
   const [isBookingCompleted, setBookingCompleted] = useState(false);
   const [congBookingShow, setCongBookingShow] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
   const [easebuzzkey , easebuzzsalt] = ['WJE5UAJ51D', 'Y3LVJ15S3M'];
   const [errormsg, setErrorMsg] = useState('');
   const [errormsgadd, setErrorMsgAdd] = useState('');
@@ -407,25 +410,27 @@ const handleBookingDetailsinner = ({COS='False' , OL='True' , PaymentID}) =>{
   // const bookingDateTimeString = `${bookingDate}T${bookingTime}:00+05:30`; 
   // setBookingDateTime(bookingDateTimeString);
   let payload = {
-      "booking_date": bookingDateTime,
+      "booking_date": bookingDate,
+      "slot":selectedSlot.slot,
       "customer": customer,
       "coupon": couponID,
       "cash_on_service": COS,
       "online": OL,
       "booking_product": cartItems,
       "booking_address": add,
-        "area": area,
-        "city": originalCity,
-        "state": state,
-        "booking_customer": name,
-        "mobile":  userProfileInfo.mobile,
-        "zipcode": zip,
-        "gst_no": gstNo,
+      "area": area,
+      "city": originalCity,
+      "state": state,
+      "booking_customer": name,
+      "mobile":  userProfileInfo.mobile,
+      "zipcode": zip,
+      "gst_no": gstNo,
   }
   console.log('payload', payload)
   // const token = typeof localStorage !== 'undefined' ? localStorage.getItem('token') : null;
   // const url = "https://support.homofixcompany.com/api/create_booking/";
-  const url =`${process.env.NEXT_PUBLIC_API_URL}/create_booking/`;
+  // const url =`${process.env.NEXT_PUBLIC_API_URL}/create_booking/`;
+  const url =`http://3.110.153.69/api/create_booking/`;
 
   const postData = async () => {
     try {
@@ -930,6 +935,32 @@ const handleOfflinePaymentWithProcessing = () => {
     setBookingProcessing(false);
   });
 };
+
+// Mouse drag scrolling event handlers
+const handleMouseDown = (e) => {
+  setIsDragging(true);
+  setStartX(e.pageX - e.currentTarget.offsetLeft);
+  setScrollLeft(e.currentTarget.scrollLeft);
+  e.currentTarget.style.cursor = 'grabbing';
+};
+
+const handleMouseLeave = (e) => {
+  setIsDragging(false);
+  e.currentTarget.style.cursor = 'grab';
+};
+
+const handleMouseUp = (e) => {
+  setIsDragging(false);
+  e.currentTarget.style.cursor = 'grab';
+};
+
+const handleMouseMove = (e) => {
+  if (!isDragging) return;
+  e.preventDefault();
+  const x = e.pageX - e.currentTarget.offsetLeft;
+  const walk = (x - startX) * 2; // Adjust scroll speed by changing multiplier
+  e.currentTarget.scrollLeft = scrollLeft - walk;
+};
   return (
     <>
       <button className={cnames} onClick={() => {
@@ -1249,15 +1280,20 @@ const handleOfflinePaymentWithProcessing = () => {
               {/* Slideable Calendar-style Date Selection */}
               <div className="mb-6">
                 <div 
-                  className="flex gap-3 overflow-x-scroll overflow-y-hidden pb-2 scroll-smooth w-full"
+                  className="flex gap-3 overflow-x-scroll overflow-y-hidden pb-2 scroll-smooth w-full select-none"
                   style={{ 
                     scrollbarWidth: 'none', 
                     msOverflowStyle: 'none',
                     WebkitOverflowScrolling: 'touch',
-                    scrollBehavior: 'smooth'
+                    scrollBehavior: isDragging ? 'auto' : 'smooth',
+                    cursor: 'grab'
                   }}
                   onTouchStart={(e) => e.currentTarget.style.scrollBehavior = 'auto'}
                   onTouchEnd={(e) => e.currentTarget.style.scrollBehavior = 'smooth'}
+                  onMouseDown={handleMouseDown}
+                  onMouseLeave={handleMouseLeave}
+                  onMouseUp={handleMouseUp}
+                  onMouseMove={handleMouseMove}
                 >
                   <style jsx>{`
                     .flex::-webkit-scrollbar {
