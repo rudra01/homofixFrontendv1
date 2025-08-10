@@ -429,8 +429,8 @@ const handleBookingDetailsinner = ({COS='False' , OL='True' , PaymentID}) =>{
   console.log('payload', payload)
   // const token = typeof localStorage !== 'undefined' ? localStorage.getItem('token') : null;
   // const url = "https://support.homofixcompany.com/api/create_booking/";
-  // const url =`${process.env.NEXT_PUBLIC_API_URL}/create_booking/`;
-  const url =`http://3.110.153.69/api/create_booking/`;
+  const url =`${process.env.NEXT_PUBLIC_API_URL}/create_booking/`;
+  // const url =`http://3.110.153.69/api/create_booking/`;
 
   const postData = async () => {
     try {
@@ -589,8 +589,8 @@ const handleOfflinePayment = () => {
     console.log('payload', payload)
     // const token = typeof localStorage !== 'undefined' ? localStorage.getItem('token') : null;
     // const url = "https://support.homofixcompany.com/api/create_booking/";
-    // const url =`${process.env.NEXT_PUBLIC_API_URL}/create_booking/`;
-    const url =`http://3.110.153.69/api/create_booking/`;
+    const url =`${process.env.NEXT_PUBLIC_API_URL}/create_booking/`;
+    // const url =`http://3.110.153.69/api/create_booking/`;
 
     const postData = async () => {
       try {
